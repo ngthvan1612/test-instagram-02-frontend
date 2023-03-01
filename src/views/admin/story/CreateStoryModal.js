@@ -3,9 +3,7 @@ import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import { toast } from 'react-toastify'
-import { AdminCommentApi } from '../../../api/admin'
-
-import { AdminPostApi } from '../../../api/admin'
+import { AdminStoryApi } from '../../../api/admin'
 
 import { AdminUserApi } from '../../../api/admin'
 
@@ -16,18 +14,12 @@ const INITIAL_STATE_FORM_DATA = {
   content: '',
   
   userId: -1,
-  postId: -1,
-  parentId: -1,
 }
 
-function CreateCommentModal(props) {
+function CreateStoryModal(props) {
   const { refreshEvent, callRefreshEvent } = props;
   const [show, setShow] = useState(false)
   const [formData, setFormData] = useState(INITIAL_STATE_FORM_DATA)
-  
-  const [refListPost, setRefListPost] = useState([]);
-  
-  const [refListComment, setRefListComment] = useState([]);
   
   const [refListUser, setRefListUser] = useState([]);
   
@@ -35,24 +27,6 @@ function CreateCommentModal(props) {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    
-    AdminPostApi.listPosts()
-      .then(resp => {
-        const data = resp.data.data;
-        setRefListPost(data);
-      })
-      .catch(err => {
-        handleErrorResponse(err);
-      })
-    
-    AdminCommentApi.listComments()
-      .then(resp => {
-        const data = resp.data.data;
-        setRefListComment(data);
-      })
-      .catch(err => {
-        handleErrorResponse(err);
-      })
     
     AdminUserApi.listUsers()
       .then(resp => {
@@ -73,11 +47,11 @@ function CreateCommentModal(props) {
     })
   }
 
-  const handleCreateComment = () => {
-    const comment = {
+  const handleCreateStory = () => {
+    const story = {
       ...formData
     };
-    AdminCommentApi.createComment(comment).then(resp => {
+    AdminStoryApi.createStory(story).then(resp => {
       handleSuccessResponse(resp);
       setFormData(INITIAL_STATE_FORM_DATA);
       setShow(false);
@@ -90,12 +64,12 @@ function CreateCommentModal(props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Create comment
+        Create story
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create comment</Modal.Title>
+          <Modal.Title>Create story</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -115,7 +89,7 @@ function CreateCommentModal(props) {
             
             
             <Form.Group className="mb-3">
-              <Form.Label>người bình luận</Form.Label>
+              <Form.Label>người dùng</Form.Label>
               <Form.Select
                 size='sm'
                 value={formData.userId}
@@ -131,47 +105,13 @@ function CreateCommentModal(props) {
               </Form.Select>
             </Form.Group>
             
-            <Form.Group className="mb-3">
-              <Form.Label>bài đăng</Form.Label>
-              <Form.Select
-                size='sm'
-                value={formData.postId}
-                onChange={handleInputChange}
-                name='postId'
-              >
-                <option value="-1">------- Chọn đi bạn -------</option>
-                {refListPost.map(post => {
-                  return (
-                    <option value={post.id}>{post.id} - {post.id}</option>
-                  )
-                })}
-              </Form.Select>
-            </Form.Group>
-            
-            <Form.Group className="mb-3">
-              <Form.Label>bình luận cha</Form.Label>
-              <Form.Select
-                size='sm'
-                value={formData.parentId}
-                onChange={handleInputChange}
-                name='parentId'
-              >
-                <option value="-1">------- Chọn đi bạn -------</option>
-                {refListComment.map(comment => {
-                  return (
-                    <option value={comment.id}>{comment.id} - {comment.content}</option>
-                  )
-                })}
-              </Form.Select>
-            </Form.Group>
-            
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCreateComment}>
+          <Button variant="primary" onClick={handleCreateStory}>
             Create
           </Button>
         </Modal.Footer>
@@ -180,4 +120,4 @@ function CreateCommentModal(props) {
   );
 }
 
-export default CreateCommentModal
+export default CreateStoryModal

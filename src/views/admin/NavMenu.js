@@ -18,6 +18,8 @@ const NavMenu = () => {
       
       <li><Link to={'/admin/follower-management'}>Follower management</Link></li>
       
+      <li><Link to={'/admin/story-management'}>Story management</Link></li>
+      
       <li><Link to={'/admin/group-message-management'}>GroupMessage management</Link></li>
       
       <li><Link to={'/admin/user-group-message-management'}>UserGroupMessage management</Link></li>

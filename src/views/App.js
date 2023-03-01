@@ -9,6 +9,7 @@ import AdminReactionManagement from './admin/reaction/ReactionManagement'
 import AdminCommentManagement from './admin/comment/CommentManagement'
 import AdminAnnounceManagement from './admin/announce/AnnounceManagement'
 import AdminFollowerManagement from './admin/follower/FollowerManagement'
+import AdminStoryManagement from './admin/story/StoryManagement'
 import AdminGroupMessageManagement from './admin/group-message/GroupMessageManagement'
 import AdminUserGroupMessageManagement from './admin/user-group-message/UserGroupMessageManagement'
 import AdminMessageManagement from './admin/message/MessageManagement'
@@ -30,6 +31,7 @@ const App = () => {
             <Route path='comment-management' element={<AdminCommentManagement/>}/>
             <Route path='announce-management' element={<AdminAnnounceManagement/>}/>
             <Route path='follower-management' element={<AdminFollowerManagement/>}/>
+            <Route path='story-management' element={<AdminStoryManagement/>}/>
             <Route path='group-message-management' element={<AdminGroupMessageManagement/>}/>
             <Route path='user-group-message-management' element={<AdminUserGroupMessageManagement/>}/>
             <Route path='message-management' element={<AdminMessageManagement/>}/>

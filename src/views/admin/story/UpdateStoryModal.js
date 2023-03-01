@@ -3,9 +3,7 @@ import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import { toast } from 'react-toastify'
-import { AdminCommentApi } from '../../../api/admin'
-
-import { AdminPostApi } from '../../../api/admin'
+import { AdminStoryApi } from '../../../api/admin'
 
 import { AdminUserApi } from '../../../api/admin'
 
@@ -16,18 +14,12 @@ const INITIAL_STATE_FORM_DATA = {
   content: '',
   
   userId: -1,
-  postId: -1,
-  parentId: -1,
 }
 
-function UpdateCommentModal(props) {
+function UpdateStoryModal(props) {
   const { refreshEvent, callRefreshEvent } = props
   const [show, setShow] = useState(false)
   const [formData, setFormData] = useState(INITIAL_STATE_FORM_DATA)
-  
-  const [refListPost, setRefListPost] = useState([]);
-  
-  const [refListComment, setRefListComment] = useState([]);
   
   const [refListUser, setRefListUser] = useState([]);
   
@@ -35,24 +27,6 @@ function UpdateCommentModal(props) {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    
-    AdminPostApi.listPosts()
-      .then(resp => {
-        const data = resp.data.data;
-        setRefListPost(data);
-      })
-      .catch(err => {
-        handleErrorResponse(err);
-      })
-    
-    AdminCommentApi.listComments()
-      .then(resp => {
-        const data = resp.data.data;
-        setRefListComment(data);
-      })
-      .catch(err => {
-        handleErrorResponse(err);
-      })
     
     AdminUserApi.listUsers()
       .then(resp => {
@@ -66,9 +40,9 @@ function UpdateCommentModal(props) {
   }, [])
 
   useEffect(() => {
-    const comment = props.data;
-    if (comment) {
-      setFormData(comment);
+    const story = props.data;
+    if (story) {
+      setFormData(story);
     }
   }, [props.data])
 
@@ -90,11 +64,11 @@ function UpdateCommentModal(props) {
     })
   }
 
-  const handleUpdateComment = () => {
-    const comment = {
+  const handleUpdateStory = () => {
+    const story = {
       ...formData
     };
-    AdminCommentApi.updateComment(comment).then(resp => {
+    AdminStoryApi.updateStory(story).then(resp => {
       handleSuccessResponse(resp);
       setFormData(INITIAL_STATE_FORM_DATA);
       setShow(false);
@@ -107,12 +81,12 @@ function UpdateCommentModal(props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow} size='sm'>
-        Update comment
+        Update story
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Update comment</Modal.Title>
+          <Modal.Title>Update story</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -132,7 +106,7 @@ function UpdateCommentModal(props) {
             
             
             <Form.Group className="mb-3">
-              <Form.Label>người bình luận</Form.Label>
+              <Form.Label>người dùng</Form.Label>
               <Form.Select
                 size='sm'
                 value={formData.userId}
@@ -148,47 +122,13 @@ function UpdateCommentModal(props) {
               </Form.Select>
             </Form.Group>
             
-            <Form.Group className="mb-3">
-              <Form.Label>bài đăng</Form.Label>
-              <Form.Select
-                size='sm'
-                value={formData.postId}
-                onChange={handleInputChange}
-                name='postId'
-              >
-                <option value="-1">------- Chọn đi bạn -------</option>
-                {refListPost.map(post => {
-                  return (
-                    <option value={post.id}>{post.id} - {post.id}</option>
-                  )
-                })}
-              </Form.Select>
-            </Form.Group>
-            
-            <Form.Group className="mb-3">
-              <Form.Label>bình luận cha</Form.Label>
-              <Form.Select
-                size='sm'
-                value={formData.parentId}
-                onChange={handleInputChange}
-                name='parentId'
-              >
-                <option value="-1">------- Chọn đi bạn -------</option>
-                {refListComment.map(comment => {
-                  return (
-                    <option value={comment.id}>{comment.id} - {comment.content}</option>
-                  )
-                })}
-              </Form.Select>
-            </Form.Group>
-            
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleUpdateComment}>
+          <Button variant="primary" onClick={handleUpdateStory}>
             Save
           </Button>
         </Modal.Footer>
@@ -197,4 +137,4 @@ function UpdateCommentModal(props) {
   );
 }
 
-export default UpdateCommentModal
+export default UpdateStoryModal

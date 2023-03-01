@@ -5,9 +5,9 @@ import Modal from 'react-bootstrap/Modal'
 import { toast } from 'react-toastify'
 import { AdminUserTagFriendPostApi } from '../../../api/admin'
 
-import { AdminPostApi } from '../../../api/admin'
-
 import { AdminUserApi } from '../../../api/admin'
+
+import { AdminPostApi } from '../../../api/admin'
 
 import { handleErrorResponse, handleSuccessResponse } from '../../../api/toast'
 
@@ -23,28 +23,28 @@ function CreateUserTagFriendPostModal(props) {
   const [show, setShow] = useState(false)
   const [formData, setFormData] = useState(INITIAL_STATE_FORM_DATA)
   
-  const [refListPost, setRefListPost] = useState([]);
-  
   const [refListUser, setRefListUser] = useState([]);
+  
+  const [refListPost, setRefListPost] = useState([]);
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     
-    AdminPostApi.listPosts()
+    AdminUserApi.listUsers()
       .then(resp => {
         const data = resp.data.data;
-        setRefListPost(data);
+        setRefListUser(data);
       })
       .catch(err => {
         handleErrorResponse(err);
       })
     
-    AdminUserApi.listUsers()
+    AdminPostApi.listPosts()
       .then(resp => {
         const data = resp.data.data;
-        setRefListUser(data);
+        setRefListPost(data);
       })
       .catch(err => {
         handleErrorResponse(err);
