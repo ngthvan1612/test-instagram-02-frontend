@@ -117,7 +117,6 @@ function UpdatePostModal(props) {
               
                 <option value="PUBLIC">Công khai</option>
                 <option value="PRIVATE">Riêng tư</option>
-                <option value="FOLLOWER">Người theo dõi tôi</option>
               </Form.Select>
             </Form.Group>
             

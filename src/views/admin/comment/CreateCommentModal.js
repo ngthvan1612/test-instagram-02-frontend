@@ -25,9 +25,9 @@ function CreateCommentModal(props) {
   const [show, setShow] = useState(false)
   const [formData, setFormData] = useState(INITIAL_STATE_FORM_DATA)
   
-  const [refListPost, setRefListPost] = useState([]);
-  
   const [refListComment, setRefListComment] = useState([]);
+  
+  const [refListPost, setRefListPost] = useState([]);
   
   const [refListUser, setRefListUser] = useState([]);
   
@@ -36,19 +36,19 @@ function CreateCommentModal(props) {
 
   useEffect(() => {
     
-    AdminPostApi.listPosts()
+    AdminCommentApi.listComments()
       .then(resp => {
         const data = resp.data.data;
-        setRefListPost(data);
+        setRefListComment(data);
       })
       .catch(err => {
         handleErrorResponse(err);
       })
     
-    AdminCommentApi.listComments()
+    AdminPostApi.listPosts()
       .then(resp => {
         const data = resp.data.data;
-        setRefListComment(data);
+        setRefListPost(data);
       })
       .catch(err => {
         handleErrorResponse(err);
