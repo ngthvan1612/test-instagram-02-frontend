@@ -5,6 +5,8 @@ import { contextInstance } from '../axios'
  * @param Story **Story 24h**
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người dùng 
  */
 const createStory = async(story) => {
   return contextInstance.post(`admin/story`, story);
@@ -15,6 +17,8 @@ const createStory = async(story) => {
  * @return
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người dùng 
  */
 const listStorys = async() => {
   return contextInstance.get(`admin/story`);
@@ -26,6 +30,8 @@ const listStorys = async() => {
  * @return
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người dùng 
  */
 const getStoryById = async(id) => {
   return contextInstance.get(`admin/story/${id}`);
@@ -36,6 +42,8 @@ const getStoryById = async(id) => {
  * @param Story **Story 24h**
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người dùng 
  */
 const updateStory = async(story) => {
   return contextInstance.put(`admin/story/${story.id}/update`, story);

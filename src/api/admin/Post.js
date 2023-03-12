@@ -6,6 +6,8 @@ import { contextInstance } from '../axios'
  * 
  * - `content`: Nội dung bài đăng 
  * - `privacy`: Quyền riêng tư 
+ * 
+ * - `authorId`: người đăng 
  */
 const createPost = async(post) => {
   return contextInstance.post(`admin/post`, post);
@@ -17,6 +19,8 @@ const createPost = async(post) => {
  * 
  * - `content`: Nội dung bài đăng 
  * - `privacy`: Quyền riêng tư 
+ * 
+ * - `authorId`: người đăng 
  */
 const listPosts = async() => {
   return contextInstance.get(`admin/post`);
@@ -29,6 +33,8 @@ const listPosts = async() => {
  * 
  * - `content`: Nội dung bài đăng 
  * - `privacy`: Quyền riêng tư 
+ * 
+ * - `authorId`: người đăng 
  */
 const getPostById = async(id) => {
   return contextInstance.get(`admin/post/${id}`);
@@ -40,6 +46,8 @@ const getPostById = async(id) => {
  * 
  * - `content`: Nội dung bài đăng 
  * - `privacy`: Quyền riêng tư 
+ * 
+ * - `authorId`: người đăng 
  */
 const updatePost = async(post) => {
   return contextInstance.put(`admin/post/${post.id}/update`, post);

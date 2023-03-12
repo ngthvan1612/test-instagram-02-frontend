@@ -4,6 +4,9 @@ import { contextInstance } from '../axios'
  * Create new userTagFriendPost
  * @param UserTagFriendPost **Tag bạn bè của bài đăng**
  * 
+ * 
+ * - `postId`: bài đăng 
+ * - `friendId`: bạn bè được tag cùng 
  */
 const createUserTagFriendPost = async(userTagFriendPost) => {
   return contextInstance.post(`admin/user-tag-friend-post`, userTagFriendPost);
@@ -13,6 +16,9 @@ const createUserTagFriendPost = async(userTagFriendPost) => {
  * Get all userTagFriendPosts
  * @return
  * 
+ * 
+ * - `postId`: bài đăng 
+ * - `friendId`: bạn bè được tag cùng 
  */
 const listUserTagFriendPosts = async() => {
   return contextInstance.get(`admin/user-tag-friend-post`);
@@ -23,6 +29,9 @@ const listUserTagFriendPosts = async() => {
  * @param id id Tag bạn bè của bài đăng
  * @return
  * 
+ * 
+ * - `postId`: bài đăng 
+ * - `friendId`: bạn bè được tag cùng 
  */
 const getUserTagFriendPostById = async(id) => {
   return contextInstance.get(`admin/user-tag-friend-post/${id}`);
@@ -32,6 +41,9 @@ const getUserTagFriendPostById = async(id) => {
  * Update userTagFriendPost by `userTagFriendPost.id`
  * @param UserTagFriendPost **Tag bạn bè của bài đăng**
  * 
+ * 
+ * - `postId`: bài đăng 
+ * - `friendId`: bạn bè được tag cùng 
  */
 const updateUserTagFriendPost = async(userTagFriendPost) => {
   return contextInstance.put(`admin/user-tag-friend-post/${userTagFriendPost.id}/update`, userTagFriendPost);

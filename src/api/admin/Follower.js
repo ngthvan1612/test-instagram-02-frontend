@@ -4,6 +4,9 @@ import { contextInstance } from '../axios'
  * Create new follower
  * @param Follower **Theo dõi**
  * 
+ * 
+ * - `userId`: người dùng 
+ * - `followId`: người được follow 
  */
 const createFollower = async(follower) => {
   return contextInstance.post(`admin/follower`, follower);
@@ -13,6 +16,9 @@ const createFollower = async(follower) => {
  * Get all followers
  * @return
  * 
+ * 
+ * - `userId`: người dùng 
+ * - `followId`: người được follow 
  */
 const listFollowers = async() => {
   return contextInstance.get(`admin/follower`);
@@ -23,6 +29,9 @@ const listFollowers = async() => {
  * @param id id Theo dõi
  * @return
  * 
+ * 
+ * - `userId`: người dùng 
+ * - `followId`: người được follow 
  */
 const getFollowerById = async(id) => {
   return contextInstance.get(`admin/follower/${id}`);
@@ -32,6 +41,9 @@ const getFollowerById = async(id) => {
  * Update follower by `follower.id`
  * @param Follower **Theo dõi**
  * 
+ * 
+ * - `userId`: người dùng 
+ * - `followId`: người được follow 
  */
 const updateFollower = async(follower) => {
   return contextInstance.put(`admin/follower/${follower.id}/update`, follower);

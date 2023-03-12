@@ -12,6 +12,7 @@ import { contextInstance } from '../axios'
  * - `profile`: Thông tin cá nhân 
  * - `gender`: Giới tính 
  * - `role`: Vai trò 
+ * 
  */
 const createUser = async(user) => {
   return contextInstance.post(`admin/user`, user);
@@ -29,6 +30,7 @@ const createUser = async(user) => {
  * - `profile`: Thông tin cá nhân 
  * - `gender`: Giới tính 
  * - `role`: Vai trò 
+ * 
  */
 const listUsers = async() => {
   return contextInstance.get(`admin/user`);
@@ -47,6 +49,7 @@ const listUsers = async() => {
  * - `profile`: Thông tin cá nhân 
  * - `gender`: Giới tính 
  * - `role`: Vai trò 
+ * 
  */
 const getUserById = async(id) => {
   return contextInstance.get(`admin/user/${id}`);
@@ -64,6 +67,7 @@ const getUserById = async(id) => {
  * - `profile`: Thông tin cá nhân 
  * - `gender`: Giới tính 
  * - `role`: Vai trò 
+ * 
  */
 const updateUser = async(user) => {
   return contextInstance.put(`admin/user/${user.id}/update`, user);

@@ -5,6 +5,10 @@ import { contextInstance } from '../axios'
  * @param Comment **Bình luận**
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người bình luận 
+ * - `postId`: bài đăng 
+ * - `parentId`: bình luận cha 
  */
 const createComment = async(comment) => {
   return contextInstance.post(`admin/comment`, comment);
@@ -15,6 +19,10 @@ const createComment = async(comment) => {
  * @return
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người bình luận 
+ * - `postId`: bài đăng 
+ * - `parentId`: bình luận cha 
  */
 const listComments = async() => {
   return contextInstance.get(`admin/comment`);
@@ -26,6 +34,10 @@ const listComments = async() => {
  * @return
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người bình luận 
+ * - `postId`: bài đăng 
+ * - `parentId`: bình luận cha 
  */
 const getCommentById = async(id) => {
   return contextInstance.get(`admin/comment/${id}`);
@@ -36,6 +48,10 @@ const getCommentById = async(id) => {
  * @param Comment **Bình luận**
  * 
  * - `content`: Nội dung 
+ * 
+ * - `userId`: người bình luận 
+ * - `postId`: bài đăng 
+ * - `parentId`: bình luận cha 
  */
 const updateComment = async(comment) => {
   return contextInstance.put(`admin/comment/${comment.id}/update`, comment);

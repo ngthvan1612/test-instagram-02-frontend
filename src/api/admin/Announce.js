@@ -6,6 +6,8 @@ import { contextInstance } from '../axios'
  * 
  * - `content`: Nội dung 
  * - `seen`: Đã xem 
+ * 
+ * - `userId`: người dùng 
  */
 const createAnnounce = async(announce) => {
   return contextInstance.post(`admin/announce`, announce);
@@ -17,6 +19,8 @@ const createAnnounce = async(announce) => {
  * 
  * - `content`: Nội dung 
  * - `seen`: Đã xem 
+ * 
+ * - `userId`: người dùng 
  */
 const listAnnounces = async() => {
   return contextInstance.get(`admin/announce`);
@@ -29,6 +33,8 @@ const listAnnounces = async() => {
  * 
  * - `content`: Nội dung 
  * - `seen`: Đã xem 
+ * 
+ * - `userId`: người dùng 
  */
 const getAnnounceById = async(id) => {
   return contextInstance.get(`admin/announce/${id}`);
@@ -40,6 +46,8 @@ const getAnnounceById = async(id) => {
  * 
  * - `content`: Nội dung 
  * - `seen`: Đã xem 
+ * 
+ * - `userId`: người dùng 
  */
 const updateAnnounce = async(announce) => {
   return contextInstance.put(`admin/announce/${announce.id}/update`, announce);

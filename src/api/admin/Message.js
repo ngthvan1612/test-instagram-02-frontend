@@ -5,6 +5,10 @@ import { contextInstance } from '../axios'
  * @param Message **Tin nhắn**
  * 
  * - `content`: Nội dung tin nhắn 
+ * 
+ * - `senderId`: người gửi 
+ * - `receiverId`: người nhận 
+ * - `groupId`: nhóm 
  */
 const createMessage = async(message) => {
   return contextInstance.post(`admin/message`, message);
@@ -15,6 +19,10 @@ const createMessage = async(message) => {
  * @return
  * 
  * - `content`: Nội dung tin nhắn 
+ * 
+ * - `senderId`: người gửi 
+ * - `receiverId`: người nhận 
+ * - `groupId`: nhóm 
  */
 const listMessages = async() => {
   return contextInstance.get(`admin/message`);
@@ -26,6 +34,10 @@ const listMessages = async() => {
  * @return
  * 
  * - `content`: Nội dung tin nhắn 
+ * 
+ * - `senderId`: người gửi 
+ * - `receiverId`: người nhận 
+ * - `groupId`: nhóm 
  */
 const getMessageById = async(id) => {
   return contextInstance.get(`admin/message/${id}`);
@@ -36,6 +48,10 @@ const getMessageById = async(id) => {
  * @param Message **Tin nhắn**
  * 
  * - `content`: Nội dung tin nhắn 
+ * 
+ * - `senderId`: người gửi 
+ * - `receiverId`: người nhận 
+ * - `groupId`: nhóm 
  */
 const updateMessage = async(message) => {
   return contextInstance.put(`admin/message/${message.id}/update`, message);

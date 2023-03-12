@@ -5,6 +5,8 @@ import { contextInstance } from '../axios'
  * @param GroupMessage **Nhóm**
  * 
  * - `displayName`: Tên nhóm 
+ * 
+ * - `adminId`: quản trị viên 
  */
 const createGroupMessage = async(groupMessage) => {
   return contextInstance.post(`admin/group-message`, groupMessage);
@@ -15,6 +17,8 @@ const createGroupMessage = async(groupMessage) => {
  * @return
  * 
  * - `displayName`: Tên nhóm 
+ * 
+ * - `adminId`: quản trị viên 
  */
 const listGroupMessages = async() => {
   return contextInstance.get(`admin/group-message`);
@@ -26,6 +30,8 @@ const listGroupMessages = async() => {
  * @return
  * 
  * - `displayName`: Tên nhóm 
+ * 
+ * - `adminId`: quản trị viên 
  */
 const getGroupMessageById = async(id) => {
   return contextInstance.get(`admin/group-message/${id}`);
@@ -36,6 +42,8 @@ const getGroupMessageById = async(id) => {
  * @param GroupMessage **Nhóm**
  * 
  * - `displayName`: Tên nhóm 
+ * 
+ * - `adminId`: quản trị viên 
  */
 const updateGroupMessage = async(groupMessage) => {
   return contextInstance.put(`admin/group-message/${groupMessage.id}/update`, groupMessage);

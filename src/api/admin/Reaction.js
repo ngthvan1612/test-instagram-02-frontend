@@ -5,6 +5,9 @@ import { contextInstance } from '../axios'
  * @param Reaction **Thả cảm xúc**
  * 
  * - `reaction`: Cảm xúc 
+ * 
+ * - `userId`: người thả cảm xúc 
+ * - `postId`: bài đăng 
  */
 const createReaction = async(reaction) => {
   return contextInstance.post(`admin/reaction`, reaction);
@@ -15,6 +18,9 @@ const createReaction = async(reaction) => {
  * @return
  * 
  * - `reaction`: Cảm xúc 
+ * 
+ * - `userId`: người thả cảm xúc 
+ * - `postId`: bài đăng 
  */
 const listReactions = async() => {
   return contextInstance.get(`admin/reaction`);
@@ -26,6 +32,9 @@ const listReactions = async() => {
  * @return
  * 
  * - `reaction`: Cảm xúc 
+ * 
+ * - `userId`: người thả cảm xúc 
+ * - `postId`: bài đăng 
  */
 const getReactionById = async(id) => {
   return contextInstance.get(`admin/reaction/${id}`);
@@ -36,6 +45,9 @@ const getReactionById = async(id) => {
  * @param Reaction **Thả cảm xúc**
  * 
  * - `reaction`: Cảm xúc 
+ * 
+ * - `userId`: người thả cảm xúc 
+ * - `postId`: bài đăng 
  */
 const updateReaction = async(reaction) => {
   return contextInstance.put(`admin/reaction/${reaction.id}/update`, reaction);
