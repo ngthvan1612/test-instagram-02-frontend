@@ -1,3 +1,4 @@
+import React from "react"
 import { Link } from "react-router-dom"
 
 const NavMenu = () => {
@@ -5,6 +6,8 @@ const NavMenu = () => {
     <ol>
       
       <li><Link to={'/admin/user-management'}>User management</Link></li>
+      
+      <li><Link to={'/admin/follower-management'}>Follower management</Link></li>
       
       <li><Link to={'/admin/post-management'}>Post management</Link></li>
       
@@ -14,11 +17,9 @@ const NavMenu = () => {
       
       <li><Link to={'/admin/comment-management'}>Comment management</Link></li>
       
-      <li><Link to={'/admin/announce-management'}>Announce management</Link></li>
-      
-      <li><Link to={'/admin/follower-management'}>Follower management</Link></li>
-      
       <li><Link to={'/admin/story-management'}>Story management</Link></li>
+      
+      <li><Link to={'/admin/announce-management'}>Announce management</Link></li>
       
       <li><Link to={'/admin/group-message-management'}>GroupMessage management</Link></li>
       

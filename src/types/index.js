@@ -1,0 +1,6 @@
+const BACKEND_URL = "http://localhost:8080"
+const ACCESS_TOKEN_KEY_NAME = "ACCESS_TOKEN_JWT"
+
+export {
+    BACKEND_URL, ACCESS_TOKEN_KEY_NAME
+}
